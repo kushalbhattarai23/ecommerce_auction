@@ -1,0 +1,68 @@
+{% extends 'website/base.html' %}
+{% block contentup %}
+    {% if notifications %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Notification</th>
+                <th>Lastname</th>
+                <th>Viewed</th>
+                <th>Product</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for n in notifications %}
+
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ n.message }}</td>
+                <td> {{ n.viewed }}
+                    {% if n.viewed %}
+                    Read
+                {% else: %}
+                    <a href="{% url 'deletenotify' n.id %}">Mark as Read</a>
+                {% endif %}</td>
+                <td>n.product_id <a href="{% url 'product_detail' n.product_id %}">View Product</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>You don't have any Notifications</p>
+    {% endif %}
+
+ {% for n in notifications %}
+
+        <p>{{ n.message }}</p>
+        <p> {{ n.viewed }}</p>
+        {% if n.viewed %}
+            Read
+        {% else %}
+            <a href="{% url 'deletenotify' n.id %}">Mark as Read</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+{% block con %}
+ {% for n in notifications %}
+
+        <p>{{ n.message }}</p>
+        <p> {{ n.viewed }}</p>
+        {% if n.viewed %}
+            Read
+        {% else %}
+            <a href="{% url 'deletenotify' n.id %}">Mark as Read</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+ {% for n in notifications %}
+
+        <p>{{ n.message }}</p>
+        <p> {{ n.viewed }}</p>
+        {% if n.viewed %}
+            Read
+        {% else %}
+            <a href="{% url 'deletenotify' n.id %}">Mark as Read</a>
+        {% endif %}
+    {% endfor %}

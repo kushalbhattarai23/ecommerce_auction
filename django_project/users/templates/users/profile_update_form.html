@@ -1,0 +1,27 @@
+{% extends 'website/base.html' %}
+
+{% block contentup %}
+<main role="main" class="container">
+    <div>
+
+        <main class="row">
+            <div class="col-md-6">
+                <div class="content-section">
+<form method="POST">
+    {% csrf_token %}
+    <p><label for="id_user">User:</label> <select name="user" required="" id="id_user">
+    <option value="{{ request.user.id }}">{{ request.user }}</option>
+</select></p>
+<p><label for="id_billingName"></label> <input class="form-control" type="text" value="{{ request.user.profile.billingName }}" placeholder="billingName" name="billingName" maxlength="250" id="id_billingName"></p>
+<p><label for="id_billingAddress1"></label> <input class="form-control" type="text" value="{{ request.user.profile.billingAddress1 }}" placeholder="BillingAddress:" name="billingAddress1" maxlength="250" id="id_billingAddress1"></p>
+<p><label for="id_billingCity"></label> <input class="form-control" type="text" value="{{ request.user.profile.billingCity }}" placeholder="billingCity" name="billingCity" maxlength="250" id="id_billingCity"></p>
+<p><label for="id_billingPostcode"></label> <input class="form-control" type="text" value="{{ request.user.profile.billingPostcode }}" placeholder="billingPostcode" name="billingPostcode" maxlength="250" id="id_billingPostcode"></p>
+<p><label for="id_billingCountry"></label> <input class="form-control" type="text"  placeholder="billingCountry" name="billingCountry" value="Nepal" maxlength="250" id="id_billingCountry"></p><input class="form-control bg-secondary" type="submit" value="Update">
+</form>
+            </div>
+            </div>
+        </main>
+    </div>
+</main>
+{% endblock %}
+

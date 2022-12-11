@@ -1,0 +1,210 @@
+{% extends 'website/base.html' %}
+{% block contentup %}
+
+    <body>
+
+    <div class="container">
+        <div class="row search">
+            <div class="col-md-6">
+                <form method='GET' action="{% url 'search' %}">
+                    <label for="abc">Search Category</label>
+                    <input type=text hidden name="data" value="category">
+                    <select class="form-control-sm " id="abc" onChange="check();">
+
+                        {% for each in categories %}
+                            <option name="q" value="{{ each.category }} ">{{ each.category }}
+
+                            </option>
+
+                        {% endfor %}
+
+                    </select>
+                    <button class="btn btn-default" type="submit" value="{{ query|escape }}">Search</button>
+                    <input hidden type="text" id="ia" name="q" value="{{ each.category }} " placeholder="Search posts"/>
+
+                </form>
+            </div>
+            <div class="col-md-2">
+                <div class="vl"></div>
+            </div>
+            <div class="col-md-4">
+                <form class="form-inline mr-auto" action="{% url 'search' %}" method="get">
+                    <div class="md-form my-0">
+                        <input name="q" class="form-control" type="text" placeholder="Product Search"
+                               aria-label="Search">
+                        <input type=text hidden name="data" value="product">
+                        <button class="btn" type="submit" value="{{ query|escape }}"><i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+
+        <hr>
+    {% if object_list %}
+        {% if cat %}
+            <h2> Search Results for {{ cat }} </h2>
+            {% endif %}
+        <div class="row" id="search-results">
+
+            {% for post in object_list %}
+                <div class="col-md-3">
+
+                    <div class="card">
+                        <a class="img-card">
+                            <img src="{{ post.image.url }}" class="img-responsive img-fluid" alt="">
+                        </a>
+                        <br/>
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                {{ post.product_name }}
+                            </h4>
+                            <div class="price">
+                                <span>{{ post.minimum_price }}</span>
+                            </div>
+                            <div class="center">
+                                {{ post.minimun_price }}
+                            </div>
+                        </div>
+                        <div class="card-read-more">
+                            <a class="btn btn-link btn-block" href="{% url 'product_detail' post.id %}">View</a>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+            {% else %}
+            <H2> Sorry no any results</H2>
+            {% endif %}
+    </div>
+    {% if object_list.has_other_pages %}
+        <nav aria-label="Page navigation conatiner"></nav>
+        <ul class="pagination justify-content-center">
+            {% if shopposts.has_previous %}
+                <li><a href="?page={{ shopposts.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% for i in shopposts.paginator.page_range %}
+                {% if shopposts.number == i %}
+                    <li class="active page-link"><span>{{ i }} </span></li>
+                {% else %}
+                    <li><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if shopposts.has_next %}
+                <li><a href="?page={{ shopposts.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% endif %}
+        </ul>
+
+        </div>
+    {% endif %}
+    </body>
+    <div class="footer-copyright text-center py-3">
+
+    <script>
+        window.onload = function () {
+            document.getElementById("ia").value = document.getElementById("abc").value;
+            console.log(document.getElementById("ia").value);
+        }
+
+        function check() {
+            document.getElementById("ia").value = document.getElementById("abc").value;
+            console.log(document.getElementById("ia").value);
+        }
+
+    </script>
+
+{% endblock %}
+
+{% block contentupa %}
+
+    <main role="main" class="container">
+        <div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="content-section">
+                        <form class="form-inline mr-auto" action="{% url 'search' %}" method="get">
+                            <div class="md-form my-0">
+                                <input name="q" class="form-control" type="text" placeholder="Product Search"
+                                       aria-label="Search">
+                                <i class="fas fa-search text-white ml-3" aria-hidden="true"></i>
+                            </div>
+
+                        </form>
+                        <form method='GET' action="{% url 'searchCat' %}">
+                            #I believe lowercase get also works
+
+                            <select id="abc" onChange="check();">
+                                {% for each in categories %}
+                                    <option name="q" value="{{ each.category }} ">{{ each.category }}
+
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+                            <button><input type="submit" value="{{ query|escape }}"/>Submit</button>
+                            <input type="text" id="ia" name="q" value="{{ each.category }} "
+                                   placeholder="Search posts"/>
+
+
+                        </form>
+
+                        <form class="form-inline mr-auto" action="{% url 'psearch' %}" method="get">
+                            <div class="md-form my-0">
+                                <input name="q" class="form-control" type="text" placeholder="Price Search"
+                                       aria-label="Search">
+                                <i class="fas fa-search text-white ml-3" aria-hidden="true"></i>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="content-section">
+                        {% if object_list %}
+                            <h1>Search Results</h1></p>
+
+                            {% for post in object_list %}
+                                <article class="media content-section">
+                                    <div class="media-body">
+                                        <div class="article-metadata">
+                                            <p class="mr-2" href="#">ProDuct Name: {{ post.product_name }}</p>
+                                            <p class="mr-2" href="#">Product Category: {{ post.category }}</p>
+                                            <p class="mr-2" href="#">Price{{ post.minimum_price }}</p>
+                                            <img class="account-img" src="{{ post.image.url }}">
+                                            <small class="text-muted">{{ post.description }}</small>
+                                            <a href="{% url 'product_detail' post.id %}">View</a>
+                                        </div>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        {% else %}
+                            <h2 style="text-align: center; color: black">No Results!!</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script>
+        window.onload = function () {
+            document.getElementById("ia").value = document.getElementById("abc").value;
+
+        }
+
+        function check() {
+            document.getElementById("ia").value = document.getElementById("abc").value;
+        }
+    </script>
+
+{% endblock %}
+-->

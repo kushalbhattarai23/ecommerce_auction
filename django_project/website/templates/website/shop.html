@@ -1,0 +1,62 @@
+{% extends "website/base.html" %}
+{% block contentup %}
+
+<div class="container">
+    <div class="row">
+	{% for post in shopposts %}
+
+        <div class="col-md-3">
+
+            <div class="card">
+                <a class="img-card" >
+                    <img src="{{ post.image.url }}" class="img-responsive img-fluid" alt="">
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        {{ post.product_name }}
+                    </h4>
+                    <p class="center">
+                        {{ post.category }}
+                    </p>
+					<div class="price">
+                        <span>{{ post.minimum_price }}</span>
+                    </div>
+                </div>
+                <div class="card-read-more">
+					<a class="btn btn-link btn-block" href="{% url 'product_detail' post.id %}">View</a>
+                </div>
+            </div>
+
+        </div>
+				    {% endfor %}
+</div>
+
+
+</div>
+    <div class="footer-copyright text-center py-3">
+    {% if shopposts.has_other_pages %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if shopposts.has_previous %}
+    <li><a href="?page={{ shopposts.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+	{% for i in shopposts.paginator.page_range %}
+      {% if shopposts.number == i %}
+          <li class="active page-link"><span>{{ i }}</span> </li>
+      {% else %}
+        <li><a href="?page={{ i }}" class="page-link" >{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if shopposts.has_next %}
+    <li><a href="?page={{ shopposts.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+   {% endif %}
+  </ul>
+
+        </div>
+
+{% endif %}
+
+
+{% endblock contentup %}
+

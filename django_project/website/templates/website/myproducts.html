@@ -1,0 +1,65 @@
+{% extends 'website/base.html' %}
+
+{% block contentup %}
+
+    {% if not posts %}
+        <div class="text-center">
+            <br>
+            <h1 class="text-center product_title">Your Uploaded product is Empty</h1>
+            <br>
+            <p class="text-center">Please Choose below  to upload products </p>
+			<main class="row">
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'post-create' %}">Add Auction Products</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'shopcreate' %}">Add Shop Products</a>
+                    </div>
+                </div>
+
+            </main>
+			</div>
+    {% else %}
+
+<div class="container">
+    <div class="row">
+	{% for post in posts %}
+
+        <div class="col-md-3">
+
+            <div class="card">
+                <a class="img-card" >
+                    <img src="{{ post.product_id.image.url }}" class="img-responsive img-fluid" alt="">
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        {{ post.product_id.product_name }}
+                    </h4>
+                    <p class="center">
+                        {{ post.product_id.category }}
+
+                    </p><p class="center">
+                         {{ post.product_id.status }}
+
+                    </p>
+					<div class="price">
+                        <span>{{ post.product_id.minimum_price }}</span>
+                    </div>
+                </div>
+                <div class="card-read-more">
+					<a class="btn btn-link btn-block" href="{% url 'product_detail' post.id %}">View</a>
+                </div>
+            </div>
+
+        </div>
+				    {% endfor %}
+</div>
+
+
+</div>
+{% endif %}
+{% endblock %}

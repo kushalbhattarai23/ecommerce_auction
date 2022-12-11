@@ -1,0 +1,57 @@
+{% extends "website/base.html" %}
+
+{% block contentup %}
+    <div class="col-md-6">
+        <div class="content-section">
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <p><label for="id_username">Username:</label> <input class="form-control" type="text" name="username"
+                                                                     maxlength="150" autofocus="" required=""
+                                                                     id="id_username"> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+                </p>
+                <p><label for="id_first_name">First name:</label> <input class="select form-control" type="text"
+                                                                         name="first_name" maxlength="30"
+                                                                         id="id_first_name"></p>
+                <p><label for="id_last_name">Last name:</label> <input class="select form-control" type="text"
+                                                                       name="last_name" maxlength="150"
+                                                                       id="id_last_name"></p>
+                <p><label for="id_email">Email:</label> <input class="select form-control" type="email" name="email"
+                                                               required="" id="id_email"></p>
+                <p><label for="id_password1">Password:</label> <input class="select form-control" type="password"
+                                                                      name="password1" required="" id="id_password1">
+                    <span class="helptext"></span></p>
+                <ul>
+                    <li>Your password can't be too similar to your other personal information.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can't be a commonly used password.</li>
+                    <li>Your password can't be entirely numeric.</li>
+                </ul>
+                <p></p>
+                <p><label for="id_password2">Password confirmation:</label> <input class="select form-control"
+                                                                                   type="password" name="password2"
+                                                                                   required="" id="id_password2"> <span
+                        class="helptext">Enter the same password as before, for verification.</span></p>
+                <p><label for="id_role">Role:</label> <select class="select form-control" name="role" id="id_role">
+                    <option value="User">User</option>
+
+                    <option value="Admin">Admin</option>
+
+                    <option value="SuperAdmin">SuperAdmin</option>
+
+                </select></p>
+
+
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock contentup %}

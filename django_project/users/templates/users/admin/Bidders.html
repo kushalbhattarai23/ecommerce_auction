@@ -1,0 +1,58 @@
+
+
+<input type="text" class="form-control-sm " placeholder="Search for product" title="Type in a name"  id="myInputbid" onkeyup="myFunctionbid()" >
+<br>
+<br>
+<table id="myTablebid" class=" responsive table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr class="header">
+      <th class="th-sm">Name
+      </th>
+      <th class="th-sm">Image
+      </th>
+      <th class="th-sm">Price
+      </th>
+
+      <th class="th-sm">Seller
+      </th>
+        <th class="th-sm">Bid Amount
+      </th>
+      <th class="th-sm">Winner
+      </th>
+    </tr>
+  </thead>
+<tbody>
+{% for each in bidderdesc %}
+
+    <tr>
+      <td>{{ each.product_id.product_name }}</td>
+        <td><figure > <img src="{{ each.product_id.image.url }}" style="height: 100px" alt="image"> </figure></td>
+      <td>{{ each.product_id.minimum_price}} </td>
+
+      <td>{{ each.user_name }}</td>
+         <td>{{ each.bid_amount }}</td>
+      <td>{{ each.product_id.winner }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+<script>
+function myFunctionbid() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputbid");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTablebid");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

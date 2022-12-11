@@ -1,0 +1,212 @@
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h1>
+            <a href="">SAMAN GHAR</a>
+        </h1>
+        <span>S<i class="fas fa-store small"></i>G</span>
+    </div>
+    <div class="profile-bg">
+        <b>{{ request.user }}</b>
+    </div>
+    <ul class="list-unstyled components">
+
+        <li>
+            <a href="{% url 'admin-home' %}">
+                <i class="fas fa-th-large"></i>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a class="btn btn-primary lg" data-toggle="modal"
+               data-target=".bd-example-modal-lg10"><i class="fas fa-gavel -th-large"></i>Auctions
+            </a>
+        </li>
+        <li>
+            <a type="a" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                    <i class="fas fa-users"></i>USERS
+                </a>
+        </li>
+        <li>
+            <a type="a" class="btn btn-primary lg" data-toggle="modal"
+                        data-target=".bd-example-modal-lg3"><i class="fas fa-store-alt"></i>SHOP
+                </a>
+        </li>
+        <li>
+            <a type="a" class="btn btn-primary lg" data-toggle="modal"
+                        data-target=".bd-example-modal-lg4"><i class="fas fa-user-friends"></i>Sellers
+                </a>
+        </li>
+        <li>
+            <a type="a" class="btn btn-primary lg" data-toggle="modal"
+               data-target=".bd-example-modal-lg5"><i class="fas fa-users"></i><i class="fas fa-gavel -th-large"></i>Bidders
+                </a>
+        </li>
+        <li>
+             <a type="a" class="btn btn-primary lg" data-toggle="modal"
+                        data-target=".bd-example-modal-lg7">All Products
+                </a>
+        </li>
+        <li>
+            <a type="button" class="btn btn-primary lg" data-toggle="modal"
+                        data-target=".bd-example-modal-lg8"><i class="fas fa-dumpster"></i>Orders
+                </a>
+        </li>
+
+        <li>
+            <a class="btn btn-primary lg" data-toggle="modal"
+               data-target=".bd-example-modal-lg12"><i class="fas fa-user-slash"></i>Disputes
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+                <div class="responsive modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Users</h4>
+                                <a type="a" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/user.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="modal fade bd-example-modal-lg3" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Shop</h4>
+                                <a type="a" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/SHOP.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<div class="modal fade bd-example-modal-lg10" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">	AUCTION</h4>
+                                <a type="a" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/AUCTION.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade bd-example-modal-lg4" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Sellers</h4>
+                                <a type="a" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/Sellers.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="modal fade bd-example-modal-lg8" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Orders</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/ORDERS.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade bd-example-modal-lg5" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Bidders</h4>
+                                <a type="a" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/Bidders.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ <div class="modal fade bd-example-modal-lg7" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Products</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/product_list.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				     <div class="modal fade bd-example-modal-lg12" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel">Disputes</h4>
+                                <a type="a" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                {% include "users/admin/dispute.html" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				

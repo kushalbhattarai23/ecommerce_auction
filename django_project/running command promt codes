@@ -1,0 +1,4 @@
+coverage run manage.py test website
+
+conda activate <environemtname>
+python manage runserver

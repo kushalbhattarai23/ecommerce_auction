@@ -1,0 +1,231 @@
+{% load static %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modernize an Admin Panel Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+    <!-- Meta Tags -->
+
+    <!-- //Meta Tags -->
+
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="{% static 'admin/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <script
+            src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+            data-auto-a11y="true"
+    ></script>
+    <!-- Bootstrap Css -->
+    <!-- Bars Css -->
+    <link rel="stylesheet" href="{% static 'admin/css/bar.css' %}">
+    <!--// Bars Css -->
+    <!-- Calender Css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/pignose.calender.css' %}"/>
+    <!--// Calender Css -->
+    <!-- Common Css -->
+    <link href="{% static 'admin/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="{% static 'admin/css/style4.css' %}">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="{% static 'admin/css/fontawesome-all.css' %}" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!--//web-fonts-->
+</head>
+
+<body>
+{% include 'website/messages.html' %}
+
+<div class="se-pre-con"></div>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    {% block sidebar %}
+        {% include "users/admin/navsidebar.html" %}
+    {% endblock %}
+    <!-- Page Content Holder -->
+    <div id="content">
+        <!-- top-bar -->
+        {% block navbar %}
+            {% include "users/admin/navbar.html" %}
+        {% endblock %}
+        <!--// top-bar -->
+        <div class="row">
+
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ users }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Dispute</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ dispute }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Products</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ products }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Sellers</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ seller }}
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="mydiv">
+
+            {% block content %}
+
+
+
+                {% include "users/admin/Report.html" %}
+
+
+
+
+            {% endblock %}
+        </div>
+
+
+        <!-- Copyright -->
+        <div class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 text-center">
+            <p>© 2018 Modernize . All Rights Reserved | Design by
+                <a href="http://w3layouts.com/"> W3layouts </a>
+            </p>
+        </div>
+        <!--// Copyright -->
+    </div>
+</div>
+
+
+<!-- Required common Js -->
+<script src="{% static 'admin/js/jquery-2.2.3.min.js' %}"></script>
+<!-- //Required common Js -->
+
+<!-- loading-gif Js -->
+<script src="{% static 'admin/js/modernizr.js' %}"></script>
+<script>
+    //paste this code under head tag or in a seperate js file.
+    // Wait for window load
+    $(window).load(function () {
+        // Animate loader off screen
+        $(".se-pre-con").fadeOut("slow");
+    });
+</script>
+<!--// loading-gif Js -->
+
+<!-- Sidebar-nav Js -->
+<script>
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+<!--// Sidebar-nav Js -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("mydiv");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+</script>
+<!-- profile-widget-dropdown js-->
+<script src="{% static 'admin/js/script.js' %}"></script>
+<!--// profile-widget-dropdown js-->
+
+<!-- Count-down -->
+
+<!--// Count-down -->
+
+<!-- pie-chart -->
+<script src="{% static 'admin/js/amcharts.js' %}"></script>
+
+<!-- dropdown nav -->
+<script>
+    $(document).ready(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                $(this).toggleClass('open');
+            },
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+</script>
+<!-- //dropdown nav -->
+
+<!-- Js for bootstrap working-->
+<script src="{% static 'admin/js/bootstrap.min.js' %} "></script>
+<!-- //Js for bootstrap working -->
+
+</body>
+
+</html>

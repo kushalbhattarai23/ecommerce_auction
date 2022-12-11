@@ -1,0 +1,154 @@
+{% extends 'website/base.html' %}
+
+{% block contentup %}
+<style>
+    .faq {
+        font-family: Helvetica;
+        width: 75%;
+        margin: 0 0 0 12%;
+    }
+
+    .faq-q {
+        border-top: 2px dashed;
+        border-color: #017b9f !important;
+        margin: 0;
+        padding: 30px;
+        counter-increment: section;
+        position: relative;
+    }
+
+    .faq-q p{
+        font-size: 17px;
+    }
+
+    .faq-q span {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .faq-q:nth-child(even):before {
+        content: counter(section);
+        right: 100%;
+        margin-right: -20px;
+        position: absolute;
+        border-radius: 50%;
+        padding: 10px;
+        height: 40px;
+        width: 40px;
+        background-color: #017b9f;
+        text-align: center;
+        color: white;
+        font-size: 110%;
+    }
+
+    .faq-q:nth-child(odd):before {
+        content: counter(section);
+        left: 100%;
+        margin-left: -20px;
+        position: absolute;
+        border-radius: 50%;
+        padding: 10px;
+        height: 40px;
+        width: 40px;
+        background-color: #017b9f;
+        text-align: center;
+        color: white;
+        font-size: 110%;
+    }
+
+
+
+    .faq-q:nth-child(even) {
+        border-left: 2px dashed;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        margin-right: 30px;
+        padding-right: 0;
+    }
+
+    .faq-q:nth-child(odd) {
+        border-right: 2px dashed;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        margin-left: 30px;
+        padding-left: 0;
+    }
+
+    .faq-q:first-child {
+        border-top: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    .faq-q:last-child {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+</style>
+
+
+<div class="mt-3 text-black-50 text-center">
+    <h3>Frequently Asked Questions</h3>
+</div>
+
+<div class="mt-5 mb-5 faq">
+    <div class="faq-q">
+        <span>
+            <b>What are the status types of products available to the users.</b>
+        </span>
+        <p>
+            There are two types of products available to the members. They are <span style="color: silver;">Auction</span>, <span style="color: gold;">Shop</span> 
+        </p>
+    </div>
+    <div class="faq-q">
+        <span>
+            <b>What are the privileges for the differnet membership type?</b>
+        </span>
+        <p>
+            The Membership types give privileges 
+            <ul>
+                <li><span style="color: silver;">SuperAdmin: </span>Members have super admin dash board and can edit everyt hing. 
+				the super admin need to approve other admin login.</li>
+                <li><span style="color: gold;">Admin: </span>Members have admin powers and can view data about the users.</li>
+                <li><span style="color: slategray;">User: </span>Users can buy , add products and update their own procuts.</li>
+            </ul>
+        </p>
+    </div>
+    <div class="faq-q">
+        <span>
+            <b>What happens if the members exceed the expected time date for a accepting auction?</b>
+        </span>
+        <p>
+            The super user can selects the new winner.
+        </p>
+    </div>
+    <div class="faq-q">
+        <span>
+            <b>How to upload products?</b>
+        </span>
+        <p>
+            in seller dashboard, add auction products and add shop products are available to upload.
+        </p>
+    </div>
+    
+    <div class="faq-q">
+        <span>
+            <b>What are auciton?</b>
+        </span>
+        <p>
+			Auctions are the products that you want to sell fast and in a limited time.
+        </p>
+    </div>
+	<div class="faq-q">
+        <span>
+            <b>How do i pay?</b>
+        </span>
+        <p>
+			payment can be done in stripe as well as with cash on delivery method.
+        </p>
+    </div>
+	
+</div>
+
+
+{% endblock %}

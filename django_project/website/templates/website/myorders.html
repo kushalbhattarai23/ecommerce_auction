@@ -1,0 +1,20 @@
+{% extends 'website/base.html' %}
+
+{% block contentup %}
+<main role="main" class="container">
+    <div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <div class="content-section">
+{% for order in orders %}
+<p>{{order.orderitems}}</p>
+<p>{{order.user}}</p>
+
+{% endfor %}
+</div>
+        </div>
+    </div>
+    </div>
+</main>
+{% endblock %}

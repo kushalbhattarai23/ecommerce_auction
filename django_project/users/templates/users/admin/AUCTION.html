@@ -1,0 +1,59 @@
+
+<input type="text" class="form-control-sm " placeholder="Search for username" title="Type in a name"  id="myInputauction" onkeyup="myFunction3()" >
+<br>
+<br>
+<table id="myTableauction" class=" responsive table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr class="header">
+      <th class="th-sm">Name
+      </th>
+      <th class="th-sm">Image
+      </th>
+      <th class="th-sm">Price
+      </th>
+      <th class="th-sm">Bid End Date
+      </th>
+      <th class="th-sm">Purchased
+      </th>
+      <th class="th-sm">Winner
+      </th>
+    </tr>
+  </thead>
+<tbody>
+{% for each in auctiondesc %}
+
+    <tr>
+      <td>{{ each.product_name }}</td>
+        <td><figure > <img src="{{ each.image.url }}" style="height: 100px" alt="image"> </figure></td>
+      <td>{{ each.minimum_price}} </td>
+      <td>{{ each.bid_end_date }}</td>
+      <td>{{ each.purchased }}</td>
+      <td>{{ each.winner }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+<script>
+$(document).ready(function() {
+    $('#myTableauction').DataTable();
+} );
+function myFunction3() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputauction");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTableauction");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

@@ -1,0 +1,45 @@
+{% extends "website/base.html" %}
+
+{% block contentup %}
+
+
+    {% if not history %}
+        <div class="text-center">
+            <br>
+            <h1 class="text-center product_title">Your History product is Empty</h1>
+            <br>
+            <p class="text-center">Please Click <a href="{% url 'home' %}">here</a> to visit products </p>
+        </div>
+    {% else %}
+
+
+<div class="container">
+				<table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th style="font-size: 20px;font-family: Comic Sans MS, serif;">Product</th>
+                                <th style="font-size: 20px;font-family: Comic Sans MS, serif; ">Time</th>
+                                <th style="font-size: 20px;font-family: Comic Sans MS, serif; ">View</th>
+                            </tr>
+                            </thead>
+                   {% for h in history %}
+                        {% if h.user_name == request.user %}
+                            <tbody>
+
+                            <tr>
+                                <td style="font-size: 20px;font-family: Comic Sans MS, serif;">{{ h.product_id.product_name }}</td>
+
+                                <td style="font-size: 20px;font-family: Comic Sans MS, serif;"> {{ h.created }}</td>
+								 <td style="font-size: 20px;font-family: Comic Sans MS, serif;"> <a href="{% url 'product_detail' h.id %}">View</a></td>
+                            </tr>
+
+                            </tbody>
+                       {% endif%}
+                    {% endfor %}
+ </table>
+
+
+
+</div>
+{% endif  %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "website/base.html" %}
+
+{% block contentup %}
+    <div class="col-md-6">
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Join Today</legend>
+
+
+                    <div id="div_id_username" class="form-group"> <label for="id_username" class=" requiredField">
+                        Username<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="username" maxlength="150" autofocus="" class="textinput textInput form-control" required="" id="id_username"> <small id="hint_id_username" class="form-text text-muted">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small> </div> </div> <div id="div_id_first_name" class="form-group"> <label for="id_first_name" class="">
+                    First name
+                </label> <div class=""> <input type="text" name="first_name" maxlength="30" class="textinput textInput form-control" id="id_first_name"> </div> </div> <div id="div_id_last_name" class="form-group"> <label for="id_last_name" class="">
+                    Last name
+                </label> <div class=""> <input type="text" name="last_name" maxlength="150" class="textinput textInput form-control" id="id_last_name"> </div> </div> <div id="div_id_email" class="form-group"> <label for="id_email" class=" requiredField">
+                    Email<span class="asteriskField">*</span> </label> <div class=""> <input type="email" name="email" class="emailinput form-control" required="" id="id_email"> </div> </div> <div id="div_id_password1" class="form-group"> <label for="id_password1" class=" requiredField">
+                    Password<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password1" class="textinput textInput form-control" required="" id="id_password1"> <small id="hint_id_password1" class="form-text text-muted"><ul><li>Your password can't be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can't be a commonly used password.</li><li>Your password can't be entirely numeric.</li></ul></small> </div> </div> <div id="div_id_password2" class="form-group"> <label for="id_password2" class=" requiredField">
+                    Password confirmation<span class="asteriskField">*</span> </label> <div class=""> <input type="password" name="password2" class="textinput textInput form-control" required="" id="id_password2"> <small id="hint_id_password2" class="form-text text-muted">Enter the same password as before, for verification.</small> </div> </div> <div id="div_id_role" class="form-group"> <label for="id_role" class=" requiredField">
+                    Role<span class="asteriskField">*</span> </label> <div class=""> <select name="role" class="select form-control" id="id_role"> <option value="Admin">Admin</option>
+
+                </select> </div> </div>
+
+                </fieldset>
+
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                </div>
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock contentup %}

@@ -1,0 +1,43 @@
+{% extends 'website/base.html' %}
+{% block contentup %}
+
+    {% if not notifications %}
+        <div class="text-center">
+            <br>
+            <h1 class="text-center product_title">Your Notifcation is Empty</h1>
+            <br>
+            <p class="text-center">Please Click <a href="{% url 'home' %}">here</a> to visit products </p>
+        </div>
+    {% else %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Notification</th>
+
+                <th>Viewed</th>
+                <th>Product</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for n in notifications %}
+
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ n.message }}</td>
+                <td>
+                    {% if n.viewed %}
+                    Read
+                {% else %}
+                    <a href="{% url 'deletenotify' n.id %}">Mark as Read</a>
+                {% endif %}</td>
+                <td> <a href="{% url 'product_detail' n.product_id %}">View Product</a></td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+{% endblock %}
+

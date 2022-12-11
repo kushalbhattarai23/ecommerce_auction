@@ -1,0 +1,57 @@
+
+<input type="text" class="form-control-sm " placeholder="Search for username" title="Type in a name"  id="myInputshop" onkeyup="myFunctionshop()" >
+<br>
+<br>
+<div class="table-responsive-sm">
+<table id="myTableshop" class=" responsive table table-striped table-bordered table-sm" cellspacing="0" width="50%">
+  <thead>
+    <tr class="header">
+      <th class="th-sm">Name
+      </th>
+      <th class="th-sm">Image
+      </th>
+      <th class="th-sm">Price
+      </th>
+
+      <th class="th-sm">Purchased
+      </th>
+      <th class="th-sm">Winner
+      </th>
+    </tr>
+  </thead>
+<tbody>
+{% for each in shopdesc %}
+
+    <tr>
+      <td>{{ each.product_name }}</td>
+        <td><figure > <img src="{{ each.image.url }}" style="height: 100px" alt="image"> </figure></td>
+      <td>{{ each.minimum_price}} </td>
+
+      <td>{{ each.purchased }}</td>
+      <td>{{ each.winner }}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+</div>
+<script>
+function myFunctionshop() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputshop");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTableshop");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

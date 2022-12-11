@@ -1,0 +1,50 @@
+{% extends "website/base.html" %}
+{% block contentup %}
+    <main role="main" class="container">
+        <div>
+
+            <main class="row">
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'post-create' %}">Add Auction Products</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'shopcreate' %}">Add Shop Products</a>
+                    </div>
+                </div>
+
+            </main>
+
+            <main class="row">
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'all-product' %}">View Added Products</a>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'favourites' %}">View Favourite Products</a>
+
+                    </div>
+                </div>
+            </main>
+
+            <main class="row">
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'history' %}">View History</a>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-section">
+					<a class="nav-item nav-link" href="{% url 'mybids' %}">View Current Bids</a>
+
+                    </div>
+                </div>
+        </div>
+    </main>
+	{% endblock contentup %}

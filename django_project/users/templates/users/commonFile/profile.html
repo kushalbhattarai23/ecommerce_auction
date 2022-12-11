@@ -1,0 +1,64 @@
+{% extends "website/base.html" %}
+
+{% block contentup %}
+    <main role="main" class="container">
+        <div>
+            <div class="row responsive">
+                <div class="col-md-6">
+                    <div class="content-section">
+                        <div class="media">
+                            <div class="media-body">
+
+                                <h2 class="account-heading">{{ user.username }}</h2>
+
+                                <p>Name {{ user.first_name }} {{ user.last_name }}</p>
+                                <p><span class="badge badge-light"><a
+                                        href="{% url 'password_reset' %}">Change Password</a></span>
+                                </p>
+                                <p>Email {{ user.email }}</p>
+                                <p>Role {% if user.is_superuser and user.is_staff %} SuperUser {% elif user.is_staff %}
+                                    Admin{% else %} User {% endif %}</p>
+                            </div>
+                        </div>
+                        <!-- FORM HERE -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="media">
+
+                        <div class="media-body">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Billing Name:
+                                    <span class="badge badge-primary badge-pill ">{{ user.profile.billingName }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Billing Address
+                                    <span class="badge badge-primary badge-pill">{{ user.profile.billingAddress1 }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Billing City:
+                                    <span class="badge badge-primary badge-pill">{{ user.profile.billingCity }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Post Code
+                                    <span class="badge badge-primary badge-pill">{{ user.profile.billingPostcode }}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                    <span class="badge badge-light"><a href="{% url 'updateAcc' request.user.id %}">Update Billing Address</a></span>
+                                </li>
+                            </ul>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+{% endblock contentup %}

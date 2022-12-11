@@ -1,0 +1,68 @@
+<style>
+    table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
+</style>
+
+
+<input type="text" class="form-control-sm " placeholder="Search for product" title="Type in a name"  id="myInputdispute" onkeyup="myFunction23()" >
+<br>
+<br>
+<table id="myTabledispute" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr class="header">
+     
+      <th class="th-sm">product name
+      </th>
+      <th class="th-sm">Dipsute
+      </th>
+	  <th class="th-sm">UserName
+      </th>
+      
+      <th class="th-sm">Solved
+      </th>
+    </tr>
+  </thead>
+<tbody>
+{% for each in disputedesc %}
+
+    <tr>
+      
+      <td>{{ each.product_id.product_name }}</td>
+      <td>{{ each.dispute }}</td>
+      <td>{{ each.user_name }}</td>
+      <td>{{ each.solved }}</td>
+     
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+<script>
+function myFunction23() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInputdispute");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTabledispute");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>

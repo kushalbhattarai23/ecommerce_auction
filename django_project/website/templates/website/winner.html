@@ -1,0 +1,105 @@
+{% extends 'website/base.html' %}
+{% block contentup %}
+    <main role="main" class="container">
+    <div>
+    <div class="row">
+
+	<div class="col-md-12">
+
+
+
+    <h3 class="h3">Auction Products</h3>
+    <div class="row">
+	{% if auctionposts %}
+	{% for post in auctionposts %}
+        <div class="col-md-3">
+
+            <div class="card">
+                <a class="img-card" >
+                    <img src="{{ post.image.url }}" class="img-responsive img-fluid" alt="">
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        {{ post.product_name }}
+                    </h4>
+                    <p class="center">
+                        {{ post.category }}
+                    </p>
+					<div class="price">
+                        <span>{{ post.minimum_price }}</span>
+                    </div>
+                </div>
+                <div class="card-read-more">
+					<a class="btn btn-link btn-block" href="{% url 'product_detail' post.id %}">View</a>
+                </div>
+            </div>
+
+        </div>
+
+		{% endfor %}
+		{% else %}
+		<div class="col-md-3">
+		NO Auction Products Available Right Now !!!!!!!!
+		</div>
+		{% endif %}
+		  </div>
+
+
+
+
+		  </div>
+    </div>
+<div class="row">
+
+	<div class="col-md-12">
+
+    <h3 class="h3">Shop Products</h3>
+{% if shopposts %}
+    <div class="row">
+
+	{% for post in shopposts %}
+        <div class="col-md-3">
+
+            <div class="card">
+                <a class="img-card" >
+                    <img src="{{ post.image.url }}" class="img-responsive img-fluid" alt="">
+                </a>
+                <br />
+                <div class="card-content">
+                    <h4 class="card-title">
+                        {{ post.product_name }}
+                    </h4>
+                    <p class="center">
+                        {{ post.category }}
+                    </p>
+					<div class="price">
+                        <span>{{ post.minimum_price }}</span>
+                    </div>
+                </div>
+                <div class="card-read-more">
+					<a class="btn btn-link btn-block" href="{% url 'product_detail' post.id %}">View</a>
+                </div>
+            </div>
+
+        </div>
+
+	{% endfor %}
+		{% else %}
+		<div class="col-md-3">
+		NO Shop Products Available Right Now !!!!!!!!
+		</div>
+		{% endif %}
+		  </div>
+    </div>
+
+      </div>
+
+</div>
+
+
+      </div>
+
+    </main>
+
+{% endblock %}
