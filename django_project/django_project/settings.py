@@ -19,17 +19,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
+SECRET_KEY = ''
 
 #Stripe
-STRIPE_PUBLISHABLE_KEY = 'pk_test_I0L7qoyynMuyuxYAMflU6l2H00ca1SEng1'
-STRIPE_SECRET_KEY = 'sk_test_zJbDkOa0Z6dn91HWxsZrWVbW00P4RZNN0p'
+STRIPE_PUBLISHABLE_KEY = ''
+STRIPE_SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-ACCOUNT_SECURITY_API_KEY='e8e07b67eaac14265ca8e0cc706792e1'
+ACCOUNT_SECURITY_API_KEY=''
 INSTALLED_APPS = [
     'stripe',
     'website.apps.BlogConfig',
